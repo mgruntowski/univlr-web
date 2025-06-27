@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { Row, Text } from "@/ui/atoms";
 
+import { AgentsRow } from "./components";
 import { MatchRowProps } from "./types";
 
 const MatchRow: React.FC<MatchRowProps> = ({
@@ -37,16 +38,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
     </Row>
 
     <Row className="gap-1 h-3 items-center justify-end">
-      {teamMatchInfoA.agents.map((agent) => (
-        <Image
-          key={`${id}-${teamMatchInfoA.team.name}-${agent}`}
-          src={`/images/agents/${agent}.png`}
-          alt={agent}
-          width={24}
-          height={24}
-          className="object-contain w-3 h-3"
-        />
-      ))}
+      <AgentsRow agents={teamMatchInfoA.agents} matchId={id} />
     </Row>
 
     <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-8 xl:gap-2">
@@ -114,16 +106,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
     </div>
 
     <Row className="gap-1 h-3 items-center justify-start">
-      {teamMatchInfoB.agents.map((agent) => (
-        <Image
-          key={`${id}-${teamMatchInfoB.team.name}-${agent}`}
-          src={`/images/agents/${agent}.png`}
-          alt={agent}
-          width={24}
-          height={24}
-          className="object-contain w-3 h-3"
-        />
-      ))}
+      <AgentsRow agents={teamMatchInfoB.agents} matchId={id} />
     </Row>
 
     <div className="flex flex-1/8 justify-end items-center">
