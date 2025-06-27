@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-import { useSearchParams } from "next/navigation";
-
 import Lottie from "lottie-react";
 
 import mainApi from "@/api";
@@ -18,6 +16,7 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
   matchesCount,
   team,
   scores,
+  isAdvancedScoresEnabled,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,9 +30,6 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
       skip: !isOpen,
     });
 
-  const shouldDisplayAdvancedScores =
-    useSearchParams().get("advanced") === "true";
-
   return (
     <>
       <li onClick={handleCollapse} className="cursor-pointer">
@@ -46,7 +42,7 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
           matchesCount={matchesCount}
           isCollapsible
           isOpen={isOpen}
-          shouldDisplayAdvancedScores={shouldDisplayAdvancedScores}
+          shouldDisplayAdvancedScores={isAdvancedScoresEnabled}
           advancedScores={scores}
         />
       </li>
