@@ -1,1 +1,1 @@
-export const BASE_URL = "https://rankingvalorantuniversitario-1.onrender.com";
+export const BASE_URL = "https://valorant-api-bytp.onrender.com";

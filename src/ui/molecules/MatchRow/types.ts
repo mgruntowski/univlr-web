@@ -1,3 +1,5 @@
-import { RankingMatch } from "@/types";
+import { Match } from "@/types";
 
-export type MatchRowProps = RankingMatch;
+export type MatchRowProps = Match & {
+  isVictory: boolean;
+};

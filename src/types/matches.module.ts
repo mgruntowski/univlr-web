@@ -1,36 +1,41 @@
 import { DateValue } from "./general.module";
-import { Team } from "./teams.module";
+import { RemoteTeam, Team } from "./teams.module";
+import { RemoteTournament, Tournament } from "./tournaments.module";
 
-export type MatchTeam = Team & {
+export interface RemoteMatchTeam {
+  agent_1: string;
+  agent_2: string;
+  agent_3: string;
+  agent_4: string;
+  agent_5: string;
+  id: string;
+  score: number;
+  team: RemoteTeam;
+}
+
+export type MatchTeam = {
+  id: string;
   score: number;
   agents: [string, string, string, string, string];
+  team: Team;
 };
 
 export interface RemoteMatch {
-  agente1: string;
-  agente2: string;
-  agente3: string;
-  agente4: string;
-  agente5: string;
-  campeonato: string;
+  id: string;
+  map: string;
+  round: string;
   date: string;
-  equipe_referente: string;
-  fase: string;
-  idPartida: string;
-  mapa: string;
-  score_i: number;
-  score_j: number;
-  team_i: string;
-  team_j: string;
-  time: string;
+  tmi_a: RemoteMatchTeam;
+  tmi_b: RemoteMatchTeam;
+  tournament: RemoteTournament;
 }
 
 export interface Match {
   id: string;
-  tournament: string;
-  date: DateValue;
   map: string;
   round: string;
-  teamA: MatchTeam;
-  teamB: MatchTeam;
+  date: DateValue;
+  teamMatchInfoA: MatchTeam;
+  teamMatchInfoB: MatchTeam;
+  tournament: Tournament;
 }

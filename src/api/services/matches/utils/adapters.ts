@@ -1,44 +1,33 @@
 import { createDateValue } from "@/api/utils/functions";
-import { Match, RemoteMatch, Team } from "@/types";
+import { Match, MatchTeam, RemoteMatch, RemoteMatchTeam } from "@/types";
 
-import { TOURNAMENT_MAP } from "./constants";
+import { teamAdapter } from "../../teams/utils/adapters";
+import { tournamentAdapter } from "../../tournaments/utils/adapters";
 
-export const matchAdapter = (
-  matchA: RemoteMatch,
-  matchB: RemoteMatch,
-  teams: Team[]
-): Match => {
-  const { idPartida, campeonato, mapa, team_i } = matchA;
-  const { team_j } = matchB;
+export const teamMatchInfoAdapter = (
+  teamMatchInfo: RemoteMatchTeam
+): MatchTeam => {
+  const { id, score, team, agent_1, agent_2, agent_3, agent_4, agent_5 } =
+    teamMatchInfo;
 
   return {
-    id: idPartida,
-    tournament:
-      TOURNAMENT_MAP[campeonato as keyof typeof TOURNAMENT_MAP] ?? campeonato,
-    map: mapa,
-    date: createDateValue(matchA.date),
-    round: matchA.fase,
-    teamA: {
-      score: matchA.score_i,
-      agents: [
-        matchA.agente1,
-        matchA.agente2,
-        matchA.agente3,
-        matchA.agente4,
-        matchA.agente5,
-      ],
-      ...teams.find((team) => team.slug === team_i)!,
-    },
-    teamB: {
-      score: matchB.score_j,
-      agents: [
-        matchB.agente1,
-        matchB.agente2,
-        matchB.agente3,
-        matchB.agente4,
-        matchB.agente5,
-      ],
-      ...teams.find((team) => team.slug === team_j)!,
-    },
+    id,
+    score,
+    agents: [agent_1, agent_2, agent_3, agent_4, agent_5],
+    team: teamAdapter(team),
+  };
+};
+
+export const matchAdapter = (match: RemoteMatch): Match => {
+  const { id, map, round, date, tmi_a, tmi_b, tournament } = match;
+
+  return {
+    id,
+    map,
+    round,
+    date: createDateValue(date),
+    teamMatchInfoA: teamMatchInfoAdapter(tmi_a),
+    teamMatchInfoB: teamMatchInfoAdapter(tmi_b),
+    tournament: tournamentAdapter(tournament),
   };
 };

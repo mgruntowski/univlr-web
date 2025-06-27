@@ -1,34 +1,20 @@
-import { getRanking } from "@/api/services";
-import { Ranking } from "@/types";
+import mainApi from "@/api";
 import { Text } from "@/ui/atoms";
-import { TeamCardRow } from "@/ui/molecules";
+import { RankingPlacementsList } from "@/ui/organisms";
 
 const Home: React.FC = async () => {
-  const ranking = await getRanking();
+  const ranking = await mainApi.getRanking();
 
   return (
-    <div className="min-h-screen px-8 font-[family-name:var(--font-geist-sans)]">
-      <header className="flex flex-col items-center justify-center py-10">
+    <div className="min-h-screen px-2 font-[family-name:var(--font-geist-sans)] sm:px-4 lg:px-8">
+      <header className="flex flex-col items-center justify-center py-4 sm:py-8 lg:py-10">
         <Text variant="titleLarge" bold className="text-center">
           Ranking Universitário de Valorant
         </Text>
       </header>
 
       <main>
-        <ul className="flex flex-col gap-1 w-full">
-          {ranking.map((item: Ranking, index: number) => (
-            <TeamCardRow
-              key={index}
-              index={index + 1}
-              name={item.team.name}
-              university={item.team.university}
-              points={item.score}
-              imageUrl={item.team.imageUrl}
-              matches={item.matches}
-              matchesCount={item.matchesCount}
-            />
-          ))}
-        </ul>
+        <RankingPlacementsList placements={ranking.placements} />
       </main>
 
       <footer className="flex flex-col items-center justify-center py-8">

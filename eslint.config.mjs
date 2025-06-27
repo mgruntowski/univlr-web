@@ -39,6 +39,11 @@ const eslintConfig = [
               position: "before",
             },
             {
+              pattern: "next",
+              group: "external",
+              position: "before",
+            },
+            {
               pattern: "next/**",
               group: "external",
               position: "before",

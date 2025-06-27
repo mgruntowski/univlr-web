@@ -1,13 +1,17 @@
 export interface RemoteTeam {
-  icon: string;
-  org: string;
+  id: number;
+  logo: string;
+  name: string;
   slug: string;
-  team_name: string;
+  tag: string;
+  university: string;
 }
 
 export interface Team {
-  university: string;
+  id: number;
   slug: string;
   name: string;
   imageUrl: string;
+  university: string;
+  tag: string;
 }

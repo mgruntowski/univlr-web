@@ -1,30 +1,26 @@
-import { Match, Ranking, RemoteRanking, Team } from "@/types";
+import { createDateValue } from "@/api/utils/functions";
+import { Ranking, RemoteRanking, Team } from "@/types";
 
 export const rankingAdapter = (
   ranking: RemoteRanking,
-  teams: Team[],
-  matches: Match[]
+  teams: Team[]
 ): Ranking => {
-  const { team, NOTA_FINAL, games_count } = ranking;
+  const { last_update, ranking: placements } = ranking;
 
   return {
-    score: NOTA_FINAL,
-    team: teams.find((t) => t.slug === team)!,
-    matches: matches
-      .filter((match) => match.teamA.slug === team || match.teamB.slug === team)
-      .sort(
-        (a, b) =>
-          new Date(b.date.iso).getTime() - new Date(a.date.iso).getTime()
-      )
-      .map((match) => ({
-        ...match,
-        teamA: match.teamA.slug === team ? match.teamA : match.teamB,
-        teamB: match.teamA.slug === team ? match.teamB : match.teamA,
-        isVictory:
-          (match.teamA.slug === team &&
-            match.teamA.score > match.teamB.score) ||
-          (match.teamB.slug === team && match.teamB.score > match.teamA.score),
-      })),
-    matchesCount: games_count,
+    lastUpdate: createDateValue(last_update),
+    placements: placements.map((placement) => ({
+      anomaly: {
+        isAnomaly: placement.anomaly.is_anomaly,
+        score: placement.anomaly.score,
+      },
+      ciLower: placement.ci_lower,
+      ciUpper: placement.ci_upper,
+      matchesCount: placement.games_count,
+      score: placement.nota_final,
+      position: placement.posicao,
+      scores: placement.scores,
+      team: teams.find((t) => t.id === placement.team_id)!,
+    })),
   };
 };

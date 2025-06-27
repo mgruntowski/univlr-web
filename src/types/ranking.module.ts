@@ -1,51 +1,70 @@
-import { Match } from "./matches.module";
+import { DateValue } from "./general.module";
 import { Team } from "./teams.module";
 
 export interface RemoteRanking {
-  NOTA_FINAL: number;
-  anomaly_score: number;
-  borda_score: number;
-  ci_lower: number;
-  ci_upper: number;
-  consistency: number;
-  games_count: number;
-  incerteza: number;
-  is_anomaly: boolean;
-  pca_score: number;
-  pos_r_bt_pois: number;
-  pos_r_colley: number;
-  pos_r_elo_final: number;
-  pos_r_elo_mov: 1;
-  pos_r_massey: number;
-  pos_r_pagerank: number;
-  pos_ts_score: number;
-  r_bt_pois: number;
-  r_bt_pois_z: number;
-  r_colley: number;
-  r_colley_z: number;
-  r_elo_final: number;
-  r_elo_final_z: number;
-  r_elo_mov: number;
-  r_elo_mov_z: number;
-  r_massey: number;
-  r_massey_z: number;
-  r_pagerank: number;
-  r_pagerank_z: number;
-  rating_ajustado: number;
-  rating_integrado: number;
-  sos_score: number;
-  team: string;
-  ts_score: number;
-  ts_score_z: number;
+  cached: boolean;
+  last_update: string;
+  limit?: number;
+  ranking: {
+    anomaly: {
+      is_anomaly: boolean;
+      score: number;
+    };
+    ci_lower: number;
+    ci_upper: number;
+    games_count: number;
+    incerteza: number;
+    nota_final: number;
+    posicao: 1;
+    scores: {
+      borda: number;
+      bradley_terry: number;
+      colley: number;
+      consistency: number;
+      elo: number;
+      elo_mov: number;
+      integrado: number;
+      massey: number;
+      pagerank: number;
+      pca: number;
+      sos: number;
+      trueskill: number;
+    };
+    tag: string;
+    team: string;
+    team_id: number;
+    university: string;
+  }[];
 }
 
-export interface RankingMatch extends Match {
-  isVictory: boolean;
+export interface RankingPlacement {
+  anomaly: {
+    isAnomaly: boolean;
+    score: number;
+  };
+  ciLower: number;
+  ciUpper: number;
+  matchesCount: number;
+  score: number;
+  position: number;
+  scores: {
+    borda: number;
+    bradley_terry: number;
+    colley: number;
+    consistency: number;
+    elo: number;
+    elo_mov: number;
+    integrado: number;
+    massey: number;
+    pagerank: number;
+    pca: number;
+    sos: number;
+    trueskill: number;
+  };
+  team: Team;
 }
 
 export interface Ranking {
-  score: number;
-  team: Team;
-  matches: RankingMatch[];
-  matchesCount: number;
+  lastUpdate: DateValue;
+  placements: RankingPlacement[];
 }

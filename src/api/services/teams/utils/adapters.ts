@@ -1,12 +1,14 @@
 import { RemoteTeam, Team } from "@/types";
 
 export const teamAdapter = (team: RemoteTeam): Team => {
-  const { team_name, org, slug } = team;
+  const { id, name, tag, university } = team;
 
   return {
-    university: org,
-    name: slug,
-    imageUrl: `/images/team_logos/${team_name}.png`,
-    slug: team_name,
+    id,
+    name: tag,
+    imageUrl: `/images/team_logos/${name}.png`,
+    slug: name,
+    university: university.toUpperCase(),
+    tag,
   };
 };

@@ -6,125 +6,132 @@ import { MatchRowProps } from "./types";
 
 const MatchRow: React.FC<MatchRowProps> = ({
   id,
-  teamA,
-  teamB,
-  isVictory,
   date,
   round,
   tournament,
   map,
-}) => {
-  return (
-    <li className="grid grid-cols-[200px_1fr_200px] justify-between w-full bg-slate-800 px-2">
-      <div className="flex flex-1/8 flex-col justify-center items-start">
-        <Text variant="bodyMedium">
-          {tournament} - {round.toUpperCase()}
-        </Text>
+  teamMatchInfoA,
+  teamMatchInfoB,
+  isVictory,
+}) => (
+  <li className="grid grid-cols-[200px_1fr_200px] justify-between w-full bg-slate-800 px-2">
+    <div className="flex flex-1/8 flex-col justify-center items-start">
+      <Text variant="bodyMedium">
+        {tournament.name} - {round.toUpperCase()}
+      </Text>
 
-        <Text variant="bodySmall" bold className="text-slate-400">
-          {date.formatted}
-        </Text>
-      </div>
+      <Text variant="bodySmall" bold className="text-slate-400">
+        {date.formatted}
+      </Text>
+    </div>
 
-      <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-2 h-8">
-        <Row className="gap-2 items-center justify-end">
-          <Row className="gap-1 h-3">
-            {teamA.agents.map((agent) => (
-              <Image
-                key={`${id}-${teamA.name}-${agent}`}
-                src={`/images/agents/${agent}.png`}
-                alt={agent}
-                width={24}
-                height={24}
-                className="object-contain w-3 h-3"
-              />
-            ))}
-          </Row>
-
-          <div className="flex flex-col items-end">
-            <Text variant="bodySmall" bold>
-              {teamA.name}
-            </Text>
-            <Text variant="bodyXSmall" className="text-slate-400">
-              {teamA.university.toUpperCase()}
-            </Text>
-          </div>
+    <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-2 h-8">
+      <Row className="gap-2 items-center justify-end">
+        <Row className="gap-1 h-3">
+          {teamMatchInfoA.agents.map((agent) => (
+            <Image
+              key={`${id}-${teamMatchInfoA.team.name}-${agent}`}
+              src={`/images/agents/${agent}.png`}
+              alt={agent}
+              width={24}
+              height={24}
+              className="object-contain w-3 h-3"
+            />
+          ))}
         </Row>
 
-        <div className="min-w-5 min-h-5 flex items-center justify-center">
-          <Image
-            src={teamA.imageUrl}
-            alt={teamA.name}
-            width={40}
-            height={40}
-            className="object-contain w-5 h-5"
-          />
+        <div className="flex flex-col items-end">
+          <Text variant="bodySmall" bold>
+            {teamMatchInfoA.team.name}
+          </Text>
+          <Text variant="bodyXSmall" className="text-slate-400">
+            {teamMatchInfoA.team.university}
+          </Text>
         </div>
+      </Row>
 
-        <div
-          className={`h-full w-10 flex items-center justify-center gap-1 ${
-            isVictory ? "bg-green-700" : "bg-red-700"
-          }`}
-        >
-          <div className="flex items-center justify-right w-2">
-            <Text variant="bodySmall" bold>
-              {teamA.score}
-            </Text>
-          </div>
-
-          <Text variant="bodySmall">:</Text>
-
-          <div className="flex items-center justify-left w-2">
-            <Text variant="bodySmall" bold>
-              {teamB.score}
-            </Text>
-          </div>
-        </div>
-
-        <div className="min-w-5 min-h-5 flex items-center justify-center">
-          <Image
-            src={teamB.imageUrl}
-            alt={teamB.name}
-            width={40}
-            height={40}
-            className="object-contain w-5 h-5"
-          />
-        </div>
-
-        <Row className="gap-2 items-center">
-          <div className="flex flex-col items-start">
-            <Text variant="bodySmall" bold>
-              {teamB.name}
-            </Text>
-            <Text variant="bodyXSmall" className="text-slate-400">
-              {teamB.university.toUpperCase()}
-            </Text>
-          </div>
-
-          <Row className="gap-1 h-3">
-            {teamB.agents.map((agent) => (
-              <Image
-                key={`${id}-${teamB.name}-${agent}`}
-                src={`/images/agents/${agent}.png`}
-                alt={agent}
-                width={24}
-                height={24}
-                className="object-contain w-3 h-3"
-              />
-            ))}
-          </Row>
-        </Row>
+      <div className="w-4 h-4 flex items-center justify-center sm:w-5 sm:h-5">
+        <Image
+          src={teamMatchInfoA.team.imageUrl}
+          alt={teamMatchInfoA.team.name}
+          width={40}
+          height={40}
+          className="object-contain w-5 h-5"
+        />
       </div>
 
-      <div className="flex flex-1/8 justify-end items-center">
-        <div className="flex items-center justify-center px-1.5 py-1 rounded-sm bg-sky-700">
+      <div
+        className={`h-full w-10 flex items-center justify-center gap-1 ${
+          isVictory ? "bg-green-700" : "bg-red-700"
+        }`}
+      >
+        <div className="flex items-center justify-right w-2">
+          <Text variant="bodySmall" bold>
+            {teamMatchInfoA.score}
+          </Text>
+        </div>
+
+        <Text variant="bodySmall">:</Text>
+
+        <div className="flex items-center justify-left w-2">
+          <Text variant="bodySmall" bold>
+            {teamMatchInfoB.score}
+          </Text>
+        </div>
+      </div>
+
+      <div className="w-4 h-4 flex items-center justify-center sm:w-5 sm:h-5">
+        <Image
+          src={teamMatchInfoB.team.imageUrl}
+          alt={teamMatchInfoB.team.name}
+          width={40}
+          height={40}
+          className="object-contain w-5 h-5"
+        />
+      </div>
+
+      <Row className="gap-2 items-center">
+        <div className="flex flex-col items-start">
+          <Text variant="bodySmall" bold>
+            {teamMatchInfoB.team.name}
+          </Text>
+          <Text variant="bodyXSmall" className="text-slate-400">
+            {teamMatchInfoB.team.university}
+          </Text>
+        </div>
+
+        <Row className="gap-1 h-3">
+          {teamMatchInfoB.agents.map((agent) => (
+            <Image
+              key={`${id}-${teamMatchInfoB.team.name}-${agent}`}
+              src={`/images/agents/${agent}.png`}
+              alt={agent}
+              width={24}
+              height={24}
+              className="object-contain w-3 h-3"
+            />
+          ))}
+        </Row>
+      </Row>
+    </div>
+
+    <div className="flex flex-1/8 justify-end items-center">
+      <div className="relative h-8 w-[150px]">
+        <Image
+          src={`/images/maps/miniature/${map}.webp`}
+          alt={map}
+          fill
+          className="object-cover"
+        />
+
+        <div className="absolute bottom-1/2 right-0 w-full translate-y-1/2 flex items-center justify-center bg-gray-800/60 py-0.25">
           <Text variant="bodySmall" bold>
             {map.toUpperCase()}
           </Text>
         </div>
       </div>
-    </li>
-  );
-};
+    </div>
+  </li>
+);
 
 export default MatchRow;

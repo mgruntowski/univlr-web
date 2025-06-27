@@ -1,7 +1,9 @@
 const endpoints = {
   ranking: "/ranking",
-  teams: "/times",
-  matches: "/partidas",
+  matches: "/matches",
+  teams: "/teams",
+  teamMatches: "/teams/:teamId/matches",
+  tournaments: "/tournaments",
 };
 
 export default endpoints;

@@ -1,8 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
+
 import { BASE_URL } from "@/api/utils/constants";
 import endpoints from "@/api/utils/endpoints";
-import { Match, RemoteMatch } from "@/types";
-
-import { getTeams } from "../teams";
+import { RemoteMatch } from "@/types";
 
 import { matchAdapter } from "./utils/adapters";
 
@@ -14,15 +14,27 @@ export const getMatches = async () => {
   });
   const data = (await res.json()) as RemoteMatch[];
 
-  const teams = await getTeams();
-
-  const matches: Match[] = [];
-
-  for (let i = 0; i < data.length; i += 2) {
-    const matchA = data[i];
-    const matchB = data[i + 1];
-    matches.push(matchAdapter(matchA, matchB, teams));
-  }
-
-  return matches;
+  return data.map(matchAdapter);
 };
+
+export const getMatchesByTeamId = async (teamId: string) => {
+  const res = await fetch(
+    `${BASE_URL}${endpoints.teamMatches.replace(":teamId", teamId)}`
+  );
+  const data = (await res.json()) as RemoteMatch[];
+
+  return data.map(matchAdapter);
+};
+
+export const useGetMatchesByTeamIdQuery = ({
+  teamId,
+  skip,
+}: {
+  teamId: string;
+  skip?: boolean;
+}) =>
+  useQuery({
+    queryKey: ["matches", teamId],
+    queryFn: () => getMatchesByTeamId(teamId),
+    enabled: !skip,
+  });
