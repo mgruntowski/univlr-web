@@ -36,15 +36,16 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
       </div>
 
       <div>
-        <Text variant="bodyLarge">{name}</Text>
+        <Row className="items-center gap-1">
+          <Text variant="bodyLarge">{name}</Text>
+          <Text variant="bodySmall" className="text-slate-400 hidden sm:block">
+            ({matchesCount} {matchesCount === 1 ? "partida" : "partidas"})
+          </Text>
+        </Row>
         <Text variant="bodySmall" className="text-slate-400">
           {universityTag}
         </Text>
       </div>
-
-      <Text variant="bodySmall" className="text-slate-400 hidden sm:block">
-        ({matchesCount} {matchesCount === 1 ? "partida" : "partidas"})
-      </Text>
     </Row>
 
     <Row className="gap-2 items-center">
