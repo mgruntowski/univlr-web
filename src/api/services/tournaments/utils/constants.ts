@@ -1,4 +1,4 @@
 export const TOURNAMENT_MAP = {
   liga_gg: "LBEU",
-  copa_alianca: "Copa Aliança 2025",
+  copa_alianca: "Copa Aliança",
 };

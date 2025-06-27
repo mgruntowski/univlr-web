@@ -27,11 +27,11 @@ const MatchRow: React.FC<MatchRowProps> = ({
 
       <div className="flex flex-col justify-center items-start">
         <Text variant="bodySmall" bold>
-          {round.toUpperCase()}
+          {date.formatted}
         </Text>
 
-        <Text variant="bodySmall" bold className="text-slate-400">
-          {date.formatted}
+        <Text variant="bodyXSmall" className="text-slate-400">
+          {tournament.name} - {round.toUpperCase()}
         </Text>
       </div>
     </Row>
