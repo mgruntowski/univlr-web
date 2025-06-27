@@ -14,6 +14,7 @@ const RankingPlacementsList: React.FC<RankingPlacementsListProps> = ({
         points={placement.score}
         matchesCount={placement.matchesCount}
         team={placement.team}
+        scores={placement.scores}
       />
     ))}
   </ul>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 import { useModals } from "@/providers/ModalProvider";
 import { Text } from "@/ui/atoms";
 
@@ -12,11 +14,19 @@ type HomeHeaderProps = {
 const HomeHeader: React.FC<HomeHeaderProps> = ({ lastUpdate }) => {
   const { openModal, closeModal } = useModals();
 
+  const { push } = useRouter();
+
+  const isAdvancedScoresEnabled = useSearchParams().get("advanced") === "true";
+
   const openRatingDisclaimerModal = () => {
     openModal(
       "rating-disclaimer",
       <RatingDisclaimerModal closeModal={closeModal} />
     );
+  };
+
+  const toggleAdvancedScores = () => {
+    push(isAdvancedScoresEnabled ? "/" : "/?advanced=true");
   };
 
   return (
@@ -53,6 +63,22 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ lastUpdate }) => {
         >
           clicando aqui.
         </span>
+      </Text>
+
+      <Text
+        variant="bodySmall"
+        className="text-slate-300 text-center mb-3 max-w-[1200px] hidden xl:block"
+      >
+        Você também pode ativar os scores detalhados clicando no botão abaixo.
+      </Text>
+
+      <Text
+        variant="bodySmall"
+        bold
+        className="text-center mb-3 max-w-[1200px] text-sky-400 cursor-pointer hover:underline xl:block hidden"
+        onClick={toggleAdvancedScores}
+      >
+        {isAdvancedScoresEnabled ? "Desativar" : "Ativar"} scores detalhados
       </Text>
     </header>
   );

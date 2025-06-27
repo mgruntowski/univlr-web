@@ -6,6 +6,7 @@ const Text: React.FC<TextProps> = ({
   children,
   bold = false,
   className,
+  onClick,
 }) => {
   return (
     <p
@@ -14,6 +15,7 @@ const Text: React.FC<TextProps> = ({
         weight: bold ? "bold" : "normal",
         className,
       })}
+      onClick={onClick}
     >
       {children}
     </p>

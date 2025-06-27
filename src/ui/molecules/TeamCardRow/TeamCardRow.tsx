@@ -16,6 +16,8 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
   matchesCount,
   isOpen,
   isCollapsible,
+  advancedScores,
+  shouldDisplayAdvancedScores,
 }) => (
   <Row className="items-center justify-between gap-4 bg-slate-900 px-2 py-1 w-full">
     <Row className="items-center gap-2">
@@ -37,8 +39,13 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
 
       <div>
         <Row className="items-center gap-1">
-          <Text variant="bodyLarge">{name}</Text>
-          <Text variant="bodySmall" className="text-slate-400 hidden sm:block">
+          <Text variant="bodyLarge" className="text-nowrap">
+            {name}
+          </Text>
+          <Text
+            variant="bodySmall"
+            className="text-slate-400 hidden text-nowrap sm:block"
+          >
             ({matchesCount} {matchesCount === 1 ? "partida" : "partidas"})
           </Text>
         </Row>
@@ -49,7 +56,44 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
     </Row>
 
     <Row className="gap-2 items-center">
-      <Text variant="bodyLarge">{points.toFixed(2)}</Text>
+      <div className="flex flex-col items-end">
+        <Text variant="bodyLarge">{points.toFixed(2)}</Text>
+
+        {shouldDisplayAdvancedScores && (
+          <Row className="gap-1 w-full justify-end flex-wrap hidden xl:flex">
+            <Text variant="bodyXSmall">
+              r_colley: {advancedScores?.colley.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              r_massey: {advancedScores?.massey.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              r_elo_final: {advancedScores?.elo.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              r_elo_mov: {advancedScores?.elo_mov.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              ts_score: {advancedScores?.trueskill.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              r_pagerank: {advancedScores?.pagerank.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              r_bt_pois: {advancedScores?.bradley_terry.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              sos_score: {advancedScores?.sos.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              consistency: {advancedScores?.consistency.toFixed(2)}
+            </Text>
+            <Text variant="bodyXSmall">
+              pca_score: {advancedScores?.pca.toFixed(2)}
+            </Text>
+          </Row>
+        )}
+      </div>
 
       {isCollapsible && (
         <FontAwesomeIcon

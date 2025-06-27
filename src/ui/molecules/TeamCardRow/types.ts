@@ -1,3 +1,5 @@
+import { AdvancedScores } from "@/types";
+
 export type TeamCardRowProps = {
   index: number;
   name: string;
@@ -7,4 +9,6 @@ export type TeamCardRowProps = {
   matchesCount: number;
   isOpen?: boolean;
   isCollapsible?: boolean;
+  shouldDisplayAdvancedScores?: boolean;
+  advancedScores?: AdvancedScores;
 };

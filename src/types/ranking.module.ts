@@ -1,6 +1,21 @@
 import { DateValue } from "./general.module";
 import { Team } from "./teams.module";
 
+export interface AdvancedScores {
+  borda: number;
+  bradley_terry: number;
+  colley: number;
+  consistency: number;
+  elo: number;
+  elo_mov: number;
+  integrado: number;
+  massey: number;
+  pagerank: number;
+  pca: number;
+  sos: number;
+  trueskill: number;
+}
+
 export interface RemoteRanking {
   cached: boolean;
   last_update: string;
@@ -16,20 +31,7 @@ export interface RemoteRanking {
     incerteza: number;
     nota_final: number;
     posicao: 1;
-    scores: {
-      borda: number;
-      bradley_terry: number;
-      colley: number;
-      consistency: number;
-      elo: number;
-      elo_mov: number;
-      integrado: number;
-      massey: number;
-      pagerank: number;
-      pca: number;
-      sos: number;
-      trueskill: number;
-    };
+    scores: AdvancedScores;
     tag: string;
     team: string;
     team_id: number;
@@ -47,20 +49,7 @@ export interface RankingPlacement {
   matchesCount: number;
   score: number;
   position: number;
-  scores: {
-    borda: number;
-    bradley_terry: number;
-    colley: number;
-    consistency: number;
-    elo: number;
-    elo_mov: number;
-    integrado: number;
-    massey: number;
-    pagerank: number;
-    pca: number;
-    sos: number;
-    trueskill: number;
-  };
+  scores: AdvancedScores;
   team: Team;
 }
 

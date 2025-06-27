@@ -6,4 +6,5 @@ export type TextProps = PropsWithChildren<{
   className?: string;
   variant?: keyof typeof typography;
   bold?: boolean;
+  onClick?: () => void;
 }>;
