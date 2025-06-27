@@ -8,7 +8,14 @@ export const rankingAdapter = (
   const { last_update, ranking: placements } = ranking;
 
   return {
-    lastUpdate: createDateValue(last_update),
+    lastUpdate: createDateValue(last_update, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }),
     placements: placements.map((placement) => ({
       anomaly: {
         isAnomaly: placement.anomaly.is_anomaly,

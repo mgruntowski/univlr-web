@@ -5,6 +5,7 @@ export interface RemoteTeam {
   slug: string;
   tag: string;
   university: string;
+  university_tag: string;
 }
 
 export interface Team {
@@ -14,4 +15,5 @@ export interface Team {
   imageUrl: string;
   university: string;
   tag: string;
+  universityTag: string;
 }

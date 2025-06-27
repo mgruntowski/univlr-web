@@ -4,7 +4,7 @@ import { PropsWithChildren, useState } from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const ReactQueryProvider: React.FC<PropsWithChildren> = ({ children }) => {
+const QueryProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [queryClient] = useState(() => new QueryClient());
 
   return (
@@ -12,4 +12,4 @@ const ReactQueryProvider: React.FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default ReactQueryProvider;
+export default QueryProvider;

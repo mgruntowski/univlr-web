@@ -10,7 +10,7 @@ import { TeamCardRowProps } from "./types";
 const TeamCardRow: React.FC<TeamCardRowProps> = ({
   index,
   name,
-  university,
+  universityTag,
   points,
   imageUrl,
   matchesCount,
@@ -38,7 +38,7 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
       <div>
         <Text variant="bodyLarge">{name}</Text>
         <Text variant="bodySmall" className="text-slate-400">
-          {university.toUpperCase()}
+          {universityTag}
         </Text>
       </div>
 

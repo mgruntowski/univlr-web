@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 
-import { ReactQueryProvider } from "@/api/providers";
+import { ModalProvider, QueryProvider } from "@/providers";
 
 import "./globals.css";
 
@@ -37,7 +37,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <QueryProvider>
+          <ModalProvider>{children}</ModalProvider>
+        </QueryProvider>
       </body>
     </html>
   );

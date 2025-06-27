@@ -14,18 +14,29 @@ const MatchRow: React.FC<MatchRowProps> = ({
   teamMatchInfoB,
   isVictory,
 }) => (
-  <li className="grid grid-cols-[200px_1fr_200px] justify-between w-full bg-slate-800 px-2">
-    <div className="flex flex-1/8 flex-col justify-center items-start">
-      <Text variant="bodyMedium">
-        {tournament.name} - {round.toUpperCase()}
-      </Text>
+  <li className="grid grid-cols-[200px_1fr_200px] justify-between w-full bg-slate-800 px-2 min-w-[1200px]">
+    <Row className="flex-1/8 items-center gap-1">
+      <div className="relative h-4 w-[50px] 2xl:h-8 2xl:w-[80px]">
+        <Image
+          src={tournament.logo}
+          alt={tournament.name}
+          fill
+          className="object-cover"
+        />
+      </div>
 
-      <Text variant="bodySmall" bold className="text-slate-400">
-        {date.formatted}
-      </Text>
-    </div>
+      <div className="flex flex-col justify-center items-start">
+        <Text variant="bodySmall" bold>
+          {round.toUpperCase()}
+        </Text>
 
-    <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-2 h-8">
+        <Text variant="bodySmall" bold className="text-slate-400">
+          {date.formatted}
+        </Text>
+      </div>
+    </Row>
+
+    <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-8 xl:gap-2">
       <Row className="gap-2 items-center justify-end">
         <Row className="gap-1 h-3">
           {teamMatchInfoA.agents.map((agent) => (
@@ -41,16 +52,16 @@ const MatchRow: React.FC<MatchRowProps> = ({
         </Row>
 
         <div className="flex flex-col items-end">
-          <Text variant="bodySmall" bold>
+          <Text variant="bodySmall" className="text-right" bold>
             {teamMatchInfoA.team.name}
           </Text>
           <Text variant="bodyXSmall" className="text-slate-400">
-            {teamMatchInfoA.team.university}
+            {teamMatchInfoA.team.universityTag}
           </Text>
         </div>
       </Row>
 
-      <div className="w-4 h-4 flex items-center justify-center sm:w-5 sm:h-5">
+      <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
         <Image
           src={teamMatchInfoA.team.imageUrl}
           alt={teamMatchInfoA.team.name}
@@ -80,7 +91,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
         </div>
       </div>
 
-      <div className="w-4 h-4 flex items-center justify-center sm:w-5 sm:h-5">
+      <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
         <Image
           src={teamMatchInfoB.team.imageUrl}
           alt={teamMatchInfoB.team.name}
@@ -96,7 +107,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
             {teamMatchInfoB.team.name}
           </Text>
           <Text variant="bodyXSmall" className="text-slate-400">
-            {teamMatchInfoB.team.university}
+            {teamMatchInfoB.team.universityTag}
           </Text>
         </div>
 
@@ -116,7 +127,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
     </div>
 
     <div className="flex flex-1/8 justify-end items-center">
-      <div className="relative h-8 w-[150px]">
+      <div className="relative h-8 w-[100px] 2xl:h-8 2xl:w-[150px]">
         <Image
           src={`/images/maps/miniature/${map}.webp`}
           alt={map}

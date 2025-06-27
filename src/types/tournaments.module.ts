@@ -5,7 +5,8 @@ export interface RemoteTournament {
   endsOn: string;
   name: string;
   startsOn: string;
-  logo?: string;
+  logo: string;
+  organizer: string;
 }
 
 export interface Tournament {
@@ -14,5 +15,6 @@ export interface Tournament {
   slug: string;
   startsOn: DateValue;
   endsOn: DateValue;
-  logo?: string;
+  logo: string;
+  organizer: string;
 }

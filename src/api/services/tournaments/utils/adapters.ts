@@ -4,7 +4,7 @@ import { RemoteTournament, Tournament } from "@/types";
 import { TOURNAMENT_MAP } from "./constants";
 
 export const tournamentAdapter = (tournament: RemoteTournament): Tournament => {
-  const { id, name, startsOn, endsOn, logo } = tournament;
+  const { id, name, startsOn, endsOn, organizer } = tournament;
 
   return {
     id,
@@ -12,6 +12,7 @@ export const tournamentAdapter = (tournament: RemoteTournament): Tournament => {
     slug: name,
     startsOn: createDateValue(startsOn),
     endsOn: createDateValue(endsOn),
-    logo,
+    logo: `/images/tournaments/${name}.png`,
+    organizer,
   };
 };

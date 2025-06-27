@@ -1,7 +1,7 @@
 export type TeamCardRowProps = {
   index: number;
   name: string;
-  university: string;
+  universityTag: string;
   points: number;
   imageUrl: string;
   matchesCount: number;

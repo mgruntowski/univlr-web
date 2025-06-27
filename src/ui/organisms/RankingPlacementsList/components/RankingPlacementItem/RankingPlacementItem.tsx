@@ -29,20 +29,22 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
     });
 
   return (
-    <li onClick={handleCollapse} className="cursor-pointer">
-      <TeamCardRow
-        index={index}
-        name={team.name}
-        university={team.university}
-        points={points}
-        imageUrl={team.imageUrl}
-        matchesCount={matchesCount}
-        isCollapsible
-        isOpen={isOpen}
-      />
+    <>
+      <li onClick={handleCollapse} className="cursor-pointer">
+        <TeamCardRow
+          index={index}
+          name={team.name}
+          universityTag={team.universityTag}
+          points={points}
+          imageUrl={team.imageUrl}
+          matchesCount={matchesCount}
+          isCollapsible
+          isOpen={isOpen}
+        />
+      </li>
 
       {isOpen && (
-        <ul className="bg-slate-800 py-1 w-full flex flex-col gap-0.5">
+        <ul className="bg-slate-800 py-1 w-full flex flex-col gap-0.5 overflow-x-auto">
           <>
             {isLoadingMatches && (
               <Lottie
@@ -62,7 +64,7 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
           </>
         </ul>
       )}
-    </li>
+    </>
   );
 };
 
