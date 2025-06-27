@@ -14,7 +14,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
   teamMatchInfoB,
   isVictory,
 }) => (
-  <li className="grid grid-cols-[200px_1fr_200px] justify-between w-full bg-slate-800 px-2 min-w-[1200px]">
+  <li className="grid grid-cols-[200px_200px_1fr_200px_200px] justify-between items-center w-full bg-slate-800 px-2 min-w-[1400px]">
     <Row className="flex-1/8 items-center gap-1">
       <div className="relative h-4 w-[50px] 2xl:h-8 2xl:w-[80px]">
         <Image
@@ -36,21 +36,21 @@ const MatchRow: React.FC<MatchRowProps> = ({
       </div>
     </Row>
 
+    <Row className="gap-1 h-3 items-center justify-end">
+      {teamMatchInfoA.agents.map((agent) => (
+        <Image
+          key={`${id}-${teamMatchInfoA.team.name}-${agent}`}
+          src={`/images/agents/${agent}.png`}
+          alt={agent}
+          width={24}
+          height={24}
+          className="object-contain w-3 h-3"
+        />
+      ))}
+    </Row>
+
     <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-8 xl:gap-2">
       <Row className="gap-2 items-center justify-end">
-        <Row className="gap-1 h-3">
-          {teamMatchInfoA.agents.map((agent) => (
-            <Image
-              key={`${id}-${teamMatchInfoA.team.name}-${agent}`}
-              src={`/images/agents/${agent}.png`}
-              alt={agent}
-              width={24}
-              height={24}
-              className="object-contain w-3 h-3"
-            />
-          ))}
-        </Row>
-
         <div className="flex flex-col items-end">
           <Text variant="bodySmall" className="text-right" bold>
             {teamMatchInfoA.team.name}
@@ -110,21 +110,21 @@ const MatchRow: React.FC<MatchRowProps> = ({
             {teamMatchInfoB.team.universityTag}
           </Text>
         </div>
-
-        <Row className="gap-1 h-3">
-          {teamMatchInfoB.agents.map((agent) => (
-            <Image
-              key={`${id}-${teamMatchInfoB.team.name}-${agent}`}
-              src={`/images/agents/${agent}.png`}
-              alt={agent}
-              width={24}
-              height={24}
-              className="object-contain w-3 h-3"
-            />
-          ))}
-        </Row>
       </Row>
     </div>
+
+    <Row className="gap-1 h-3 items-center justify-start">
+      {teamMatchInfoB.agents.map((agent) => (
+        <Image
+          key={`${id}-${teamMatchInfoB.team.name}-${agent}`}
+          src={`/images/agents/${agent}.png`}
+          alt={agent}
+          width={24}
+          height={24}
+          className="object-contain w-3 h-3"
+        />
+      ))}
+    </Row>
 
     <div className="flex flex-1/8 justify-end items-center">
       <div className="relative h-8 w-[100px] 2xl:h-8 2xl:w-[150px]">
