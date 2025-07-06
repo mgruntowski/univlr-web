@@ -15,16 +15,16 @@ const MatchRow: React.FC<MatchRowProps> = ({
   teamMatchInfoB,
   isVictory,
 }) => (
-  <li className="grid grid-cols-[200px_200px_1fr_200px_200px] justify-between items-center w-full bg-slate-800 px-2 min-w-[1400px]">
-    <Row className="flex-1/8 items-center gap-1">
-      <div className="relative h-4 w-[50px] 2xl:h-8 2xl:w-[80px]">
-        <Image
-          src={tournament.logo}
-          alt={tournament.name}
-          fill
-          className="object-cover"
-        />
-      </div>
+  <li className="grid grid-cols-[200px_200px_1fr_200px_200px] justify-between items-center w-full bg-slate-800 rounded-md">
+    <Row className="flex-1/8 items-left gap-1">
+      <div
+        className="relative h-6 w-[60px] rounded-tl-md rounded-bl-md"
+        style={{
+          backgroundImage: `url(${tournament.logo})`,
+          backgroundSize: "200%",
+          backgroundPosition: "right",
+        }}
+      />
 
       <div className="flex flex-col justify-center items-start">
         <Text variant="bodySmall" bold>
@@ -41,22 +41,21 @@ const MatchRow: React.FC<MatchRowProps> = ({
       <AgentsRow agents={teamMatchInfoA.agents} matchId={id} />
     </Row>
 
-    <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-8 xl:gap-2">
-      <Row className="gap-2 items-center justify-end">
-        <div className="flex flex-col items-end">
-          <Text variant="bodySmall" className="text-right" bold>
-            {teamMatchInfoA.team.name}
-          </Text>
-          <Text variant="bodyXSmall" className="text-slate-400">
-            {teamMatchInfoA.team.universityTag}
-          </Text>
-        </div>
-      </Row>
+    <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-6 xl:gap-2">
+      <Text
+        variant="bodySmall"
+        className="text-right"
+        bold
+        title={`${teamMatchInfoA.team.name} - ${teamMatchInfoA.team.universityTag}`}
+      >
+        {teamMatchInfoA.team.tag}
+      </Text>
 
       <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
         <Image
           src={teamMatchInfoA.team.imageUrl}
           alt={teamMatchInfoA.team.name}
+          title={`${teamMatchInfoA.team.name} - ${teamMatchInfoA.team.universityTag}`}
           width={40}
           height={40}
           className="object-contain w-5 h-5"
@@ -87,22 +86,20 @@ const MatchRow: React.FC<MatchRowProps> = ({
         <Image
           src={teamMatchInfoB.team.imageUrl}
           alt={teamMatchInfoB.team.name}
+          title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
           width={40}
           height={40}
           className="object-contain w-5 h-5"
         />
       </div>
 
-      <Row className="gap-2 items-center">
-        <div className="flex flex-col items-start">
-          <Text variant="bodySmall" bold>
-            {teamMatchInfoB.team.name}
-          </Text>
-          <Text variant="bodyXSmall" className="text-slate-400">
-            {teamMatchInfoB.team.universityTag}
-          </Text>
-        </div>
-      </Row>
+      <Text
+        variant="bodySmall"
+        bold
+        title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
+      >
+        {teamMatchInfoB.team.tag}
+      </Text>
     </div>
 
     <Row className="gap-1 h-3 items-center justify-start">
@@ -110,10 +107,11 @@ const MatchRow: React.FC<MatchRowProps> = ({
     </Row>
 
     <div className="flex flex-1/8 justify-end items-center">
-      <div className="relative h-8 w-[100px] 2xl:h-8 2xl:w-[150px]">
+      <div className="relative h-6 w-[120px]">
         <Image
           src={`/images/maps/miniature/${map}.webp`}
           alt={map}
+          title={map.toUpperCase()}
           fill
           className="object-cover"
         />

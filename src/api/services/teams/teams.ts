@@ -14,3 +14,33 @@ export const getTeams = async () => {
 
   return data.map(teamAdapter);
 };
+
+export const getTeamBySlug = async (slug: string) => {
+  const res = await fetch(
+    `${BASE_URL}${endpoints.teamBySlug.replace(":slug", slug)}`,
+    {
+      next: {
+        revalidate: 60 * 60 * 2, // 2 hours
+      },
+    }
+  );
+  const data = (await res.json()) as RemoteTeam;
+
+  return teamAdapter(data);
+};
+
+export const getTeamById = async (id: string) => {
+  const res = await fetch(
+    `${BASE_URL}${endpoints.teamById.replace(":teamId", id)}`,
+    {
+      next: {
+        revalidate: 60 * 60 * 2, // 2 hours
+      },
+    }
+  );
+  const data = (await res.json()) as RemoteTeam;
+
+  console.log(data);
+
+  return teamAdapter(data);
+};

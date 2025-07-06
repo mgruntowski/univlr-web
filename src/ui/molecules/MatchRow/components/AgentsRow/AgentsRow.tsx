@@ -15,11 +15,12 @@ const AgentsRow: React.FC<AgentsRowProps> = ({ agents, matchId }) => {
       {orderedAgents.map((agent) => (
         <Image
           key={`${matchId}-${agent}`}
-          src={`/images/agents/${agent}.png`}
+          src={`/images/agents/${agent.toLowerCase()}.png`}
           alt={agent ?? ""}
-          width={24}
-          height={24}
-          className="object-contain w-3 h-3"
+          title={agent}
+          width={20}
+          height={20}
+          className="object-contain w-[20px] h-[20px]"
         />
       ))}
     </>

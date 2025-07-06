@@ -9,6 +9,7 @@ import { ModalProvider, QueryProvider } from "@/providers";
 import "./globals.css";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { GlobalHeader } from "./components";
 
 config.autoAddCss = false;
 
@@ -38,7 +39,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryProvider>
-          <ModalProvider>{children}</ModalProvider>
+          <ModalProvider>
+            <GlobalHeader />
+
+            {children}
+          </ModalProvider>
         </QueryProvider>
       </body>
     </html>

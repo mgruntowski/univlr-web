@@ -8,7 +8,7 @@ export const rankingAdapter = (
   const { last_update, ranking: placements } = ranking;
 
   return {
-    lastUpdate: createDateValue(`${last_update}-00:00`, {
+    lastUpdate: createDateValue(`${last_update}`, {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
