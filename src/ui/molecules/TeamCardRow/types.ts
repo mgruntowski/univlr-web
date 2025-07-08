@@ -7,8 +7,6 @@ export type TeamCardRowProps = {
   points: number;
   imageUrl: string;
   matchesCount: number;
-  isOpen?: boolean;
-  isCollapsible?: boolean;
   shouldDisplayAdvancedScores?: boolean;
   advancedScores?: AdvancedScores;
 };
