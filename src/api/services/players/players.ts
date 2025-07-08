@@ -14,5 +14,5 @@ export const getPlayers = async (teamId: number) => {
 
   const data = await res.json();
 
-  return data.players as Player[];
+  return data as Player[];
 };

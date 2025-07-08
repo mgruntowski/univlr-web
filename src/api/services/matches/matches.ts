@@ -23,8 +23,6 @@ export const getMatchesByTeamId = async (teamId: string) => {
   );
   const data = (await res.json()) as RemoteMatch[];
 
-  console.log(data);
-
   return data.map(matchAdapter);
 };
 

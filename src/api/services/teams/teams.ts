@@ -40,7 +40,5 @@ export const getTeamById = async (id: string) => {
   );
   const data = (await res.json()) as RemoteTeam;
 
-  console.log(data);
-
   return teamAdapter(data);
 };

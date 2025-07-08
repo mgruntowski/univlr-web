@@ -1,6 +1,6 @@
 import { Text } from "@/ui/atoms";
 
-const HomeFooter: React.FC = () => (
+const GlobalFooter: React.FC = () => (
   <footer className="flex flex-col items-center justify-center py-8">
     <Text variant="bodySmall" className="text-slate-400">
       calculations, api, and data collection by kmyzth
@@ -20,4 +20,4 @@ const HomeFooter: React.FC = () => (
   </footer>
 );
 
-export default HomeFooter;
+export default GlobalFooter;

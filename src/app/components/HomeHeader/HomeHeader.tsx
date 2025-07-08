@@ -20,7 +20,7 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ lastUpdate }) => {
   };
 
   return (
-    <header className="flex flex-col items-center justify-center py-4 sm:py-8 lg:py-10">
+    <header className="flex flex-col items-center justify-center py-4">
       <Text variant="titleLarge" bold className="text-center">
         Ranking Universitário de Valorant
       </Text>

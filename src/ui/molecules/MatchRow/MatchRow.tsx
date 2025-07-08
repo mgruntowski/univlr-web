@@ -38,7 +38,11 @@ const MatchRow: React.FC<MatchRowProps> = ({
     </Row>
 
     <Row className="gap-1 h-3 items-center justify-end">
-      <AgentsRow agents={teamMatchInfoA.agents} matchId={id} />
+      <AgentsRow
+        agents={teamMatchInfoA.agents}
+        matchId={id}
+        teamSlug={teamMatchInfoA.team.slug}
+      />
     </Row>
 
     <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-6 xl:gap-2">
@@ -103,25 +107,31 @@ const MatchRow: React.FC<MatchRowProps> = ({
     </div>
 
     <Row className="gap-1 h-3 items-center justify-start">
-      <AgentsRow agents={teamMatchInfoB.agents} matchId={id} />
+      <AgentsRow
+        agents={teamMatchInfoB.agents}
+        matchId={id}
+        teamSlug={teamMatchInfoB.team.slug}
+      />
     </Row>
 
     <div className="flex flex-1/8 justify-end items-center">
-      <div className="relative h-6 w-[120px]">
-        <Image
-          src={`/images/maps/miniature/${map}.webp`}
-          alt={map}
-          title={map.toUpperCase()}
-          fill
-          className="object-cover"
-        />
+      {map && (
+        <div className="relative h-6 w-[120px]">
+          <Image
+            src={`/images/maps/miniature/${map}.webp`}
+            alt={map}
+            title={map.toUpperCase()}
+            fill
+            className="object-cover"
+          />
 
-        <div className="absolute bottom-1/2 right-0 w-full translate-y-1/2 flex items-center justify-center bg-gray-800/60 py-0.25">
-          <Text variant="bodySmall" bold>
-            {map.toUpperCase()}
-          </Text>
+          <div className="absolute bottom-1/2 right-0 w-full translate-y-1/2 flex items-center justify-center bg-gray-800/60 py-0.25">
+            <Text variant="bodySmall" bold>
+              {map.toUpperCase()}
+            </Text>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   </li>
 );

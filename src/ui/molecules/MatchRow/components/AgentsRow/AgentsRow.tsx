@@ -7,14 +7,14 @@ import Image from "next/image";
 import { AgentsRowProps } from "./types";
 import { orderAgentsByRole } from "./utils/functions";
 
-const AgentsRow: React.FC<AgentsRowProps> = ({ agents, matchId }) => {
+const AgentsRow: React.FC<AgentsRowProps> = ({ agents, matchId, teamSlug }) => {
   const orderedAgents = useMemo(() => orderAgentsByRole(agents), [agents]);
 
   return (
     <>
       {orderedAgents.map((agent) => (
         <Image
-          key={`${matchId}-${agent}`}
+          key={`${teamSlug}-${matchId}-${agent}`}
           src={`/images/agents/${agent.toLowerCase()}.png`}
           alt={agent ?? ""}
           title={agent}

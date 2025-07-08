@@ -2,7 +2,7 @@ import mainApi from "@/api";
 import { Page } from "@/ui/atoms";
 import { RankingPlacementsList } from "@/ui/organisms";
 
-import { HomeFooter, HomeHeader } from "./components";
+import { HomeHeader } from "./components";
 
 const Home: React.FC = async () => {
   const ranking = await mainApi.getRanking();
@@ -15,8 +15,6 @@ const Home: React.FC = async () => {
         <main>
           <RankingPlacementsList placements={ranking.placements} />
         </main>
-
-        <HomeFooter />
       </Page>
     </div>
   );

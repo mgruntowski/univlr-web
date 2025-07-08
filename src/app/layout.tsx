@@ -9,7 +9,7 @@ import { ModalProvider, QueryProvider } from "@/providers";
 import "./globals.css";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { GlobalHeader } from "./components";
+import { GlobalFooter, GlobalHeader } from "./components";
 
 config.autoAddCss = false;
 
@@ -43,6 +43,8 @@ export default function RootLayout({
             <GlobalHeader />
 
             {children}
+
+            <GlobalFooter />
           </ModalProvider>
         </QueryProvider>
       </body>

@@ -12,7 +12,7 @@ const TeamHeader: React.FC<TeamHeaderProps> = ({
   university,
 }) => {
   return (
-    <div className="flex flex-col rounded-xl bg-slate-700">
+    <div className="flex flex-col rounded-xl bg-slate-800">
       <div className="w-full h-[200px] relative overflow-hidden rounded-t-xl bg-slate-900">
         <div
           className="absolute inset-0 bg-cover bg-center blur-sm bg-slate-900"

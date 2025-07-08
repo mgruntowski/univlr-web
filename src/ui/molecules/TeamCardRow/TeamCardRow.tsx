@@ -19,7 +19,7 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
   advancedScores,
   shouldDisplayAdvancedScores,
 }) => (
-  <Row className="items-center justify-between gap-4 bg-slate-900 px-2 py-1 w-full">
+  <Row className="items-center justify-between gap-4 bg-slate-800 px-2 py-1 w-full rounded-md hover:bg-slate-700 transition-colors duration-300">
     <Row className="items-center gap-2">
       <div className="w-3 py-0.25 bg-sky-700 rounded-sm flex items-center justify-center sm:w-4">
         <Text variant="bodySmall" bold>
