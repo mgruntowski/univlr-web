@@ -29,6 +29,8 @@ export const rankingAdapter = (
       position: placement.posicao,
       scores: placement.scores,
       team: teams.find((t) => t.id === placement.team_id)!,
+      isNew: placement.is_new,
+      variation: placement.variacao,
     })),
   };
 };

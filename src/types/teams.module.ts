@@ -6,6 +6,9 @@ export interface RemoteTeam {
   tag: string;
   university: string;
   university_tag: string;
+  instagram: string;
+  twitch: string;
+  estado: string;
 }
 
 export interface Team {
@@ -16,4 +19,7 @@ export interface Team {
   university: string;
   tag: string;
   universityTag: string;
+  uf: string;
+  instagram: string;
+  twitch: string;
 }

@@ -36,6 +36,8 @@ export interface RemoteRanking {
     team: string;
     team_id: number;
     university: string;
+    variacao: number;
+    is_new: boolean;
   }[];
 }
 
@@ -51,6 +53,8 @@ export interface RankingPlacement {
   position: number;
   scores: AdvancedScores;
   team: Team;
+  isNew: boolean;
+  variation: number;
 }
 
 export interface Ranking {

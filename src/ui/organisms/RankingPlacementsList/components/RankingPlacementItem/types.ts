@@ -7,4 +7,6 @@ export type RankingPlacementItemProps = {
   team: Team;
   scores: AdvancedScores;
   isAdvancedScoresEnabled: boolean;
+  isNew: boolean;
+  variation: number;
 };

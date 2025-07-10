@@ -13,6 +13,8 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
   matchesCount,
   advancedScores,
   shouldDisplayAdvancedScores,
+  isNew,
+  variation,
 }) => (
   <>
     <Row className="items-center justify-between gap-4 bg-slate-800 px-2 py-1 w-full rounded-md hover:bg-slate-700 transition-colors duration-300">
@@ -21,6 +23,27 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
           <Text variant="bodySmall" bold>
             {index}
           </Text>
+        </div>
+
+        <div className="w-4 py-0.25 flex items-center justify-center">
+          {isNew ? (
+            <Text variant="bodyXXSmall" className="text-sky-400">
+              NOVO
+            </Text>
+          ) : variation !== 0 ? (
+            <Text
+              variant="bodySmall"
+              bold
+              className={variation > 0 ? "text-green-500" : "text-red-500"}
+            >
+              {variation > 0 ? "+" : ""}
+              {variation}
+            </Text>
+          ) : (
+            <Text variant="bodySmall" bold>
+              -
+            </Text>
+          )}
         </div>
 
         <div className="w-4 h-4 flex items-center justify-center sm:w-6 sm:h-6">

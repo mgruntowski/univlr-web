@@ -9,4 +9,6 @@ export type TeamCardRowProps = {
   matchesCount: number;
   shouldDisplayAdvancedScores?: boolean;
   advancedScores?: AdvancedScores;
+  isNew: boolean;
+  variation: number;
 };

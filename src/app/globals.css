@@ -10,6 +10,10 @@
 
 @theme {
   --spacing: 8px;
+
+  /* Typography */
+  --text-tiny: 0.625rem;
+  --text-tiny--line-height: 1.25rem; 
 }
 
 @theme inline {

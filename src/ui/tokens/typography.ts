@@ -6,4 +6,5 @@ export const typography = {
   bodyMedium: "text-sm sm:text-base",
   bodySmall: "text-xs sm:text-sm",
   bodyXSmall: "text-xs sm:text-xs",
+  bodyXXSmall: "text-tiny sm:text-tiny",
 };

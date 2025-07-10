@@ -11,6 +11,8 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
   team,
   scores,
   isAdvancedScoresEnabled,
+  isNew,
+  variation,
 }) => (
   <Link href={`/team/${team.slug}`}>
     <li className="cursor-pointer">
@@ -23,6 +25,8 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
         matchesCount={matchesCount}
         shouldDisplayAdvancedScores={isAdvancedScoresEnabled}
         advancedScores={scores}
+        isNew={isNew}
+        variation={variation}
       />
     </li>
   </Link>

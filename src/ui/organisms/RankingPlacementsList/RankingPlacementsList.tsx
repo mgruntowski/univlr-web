@@ -37,6 +37,8 @@ const RankingPlacementsList: React.FC<RankingPlacementsListProps> = ({
           team={placement.team}
           scores={placement.scores}
           isAdvancedScoresEnabled={isAdvancedScoresEnabled}
+          isNew={placement.isNew}
+          variation={placement.variation}
         />
       ))}
     </ul>
