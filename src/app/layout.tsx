@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 
-import { ModalProvider, QueryProvider } from "@/providers";
+import { ModalProvider, QueryProvider, ThemeProvider } from "@/providers";
 
 import "./globals.css";
 
@@ -34,18 +34,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryProvider>
-          <ModalProvider>
-            <GlobalHeader />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ModalProvider>
+              <GlobalHeader />
 
-            {children}
+              {children}
 
-            <GlobalFooter />
-          </ModalProvider>
+              <GlobalFooter />
+            </ModalProvider>
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

@@ -1,14 +1,15 @@
 import { Row, Text } from "@/ui/atoms";
 import { HeaderNav } from "@/ui/molecules";
 
+import { ThemeSwitch } from "./components";
 import { NAV_ITEMS } from "./utils/constants";
 
 const GlobalHeader: React.FC = () => {
   return (
-    <header className="w-full mb-3 bg-slate-900 border-b-1 border-slate-800">
+    <header className="w-full mb-3 bg-background border-b-1 border-border">
       <div className="flex items-center justify-between gap-2 max-w-[1200px] h-[60px] mx-auto">
         <Row className="items-center gap-8 h-full">
-          <Text variant="titleSmall" bold>
+          <Text size="titleSmall" weight="bold">
             UniVLR
           </Text>
 
@@ -18,6 +19,8 @@ const GlobalHeader: React.FC = () => {
             ))}
           </Row>
         </Row>
+
+        <ThemeSwitch />
       </div>
     </header>
   );

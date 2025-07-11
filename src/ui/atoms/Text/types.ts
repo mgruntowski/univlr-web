@@ -1,11 +1,15 @@
 import { PropsWithChildren } from "react";
 
-import { typography } from "@/ui/tokens";
+import { VariantProps } from "class-variance-authority";
 
-export type TextProps = PropsWithChildren<{
-  className?: string;
-  variant?: keyof typeof typography;
-  bold?: boolean;
-  onClick?: () => void;
-  title?: string;
-}>;
+import { Margins } from "@/types";
+
+import { textVariants } from "./styles";
+
+export type TextProps = PropsWithChildren<
+  VariantProps<typeof textVariants> & {
+    className?: string;
+    onClick?: () => void;
+    title?: string;
+  } & Margins
+>;

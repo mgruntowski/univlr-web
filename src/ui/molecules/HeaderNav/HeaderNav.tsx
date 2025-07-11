@@ -17,11 +17,11 @@ const HeaderNav: React.FC<HeaderNavProps> = ({ label, path }) => {
       <div
         className={`flex items-center gap-1 h-full relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[3px]  after:transition-opacity after:duration-300 after:opacity-0 hover:after:opacity-100 ${
           isActive
-            ? "after:opacity-100 after:bg-slate-200"
-            : "after:opacity-0 after:bg-slate-500"
+            ? "after:opacity-100 after:bg-primary"
+            : "after:opacity-0 after:bg-transparent"
         }`}
       >
-        <Text variant="bodySmall">{label}</Text>
+        <Text size="bodySmall">{label}</Text>
       </div>
     </Link>
   );

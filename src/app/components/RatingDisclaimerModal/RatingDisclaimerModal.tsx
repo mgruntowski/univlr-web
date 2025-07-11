@@ -14,13 +14,13 @@ const RatingDisclaimerModal: React.FC<RatingDisclaimerModalProps> = ({
     className="w-[900px]"
   >
     <div className="flex flex-col gap-2">
-      <Text variant="bodyMedium">
+      <Text size="bodyMedium">
         A nota de cada time é calculada automaticamente por um algoritmo, que
         usa os seguintes pesos e parâmetros:
       </Text>
 
       <div className="flex flex-col gap-1">
-        <Text variant="bodyLarge" bold>
+        <Text size="bodyLarge" weight="bold">
           1. Métricas brutas de desempenho (55%)
         </Text>
 
@@ -73,7 +73,7 @@ const RatingDisclaimerModal: React.FC<RatingDisclaimerModalProps> = ({
         <br />
       </Text>
 
-      <Text variant="bodyLarge" bold>
+      <Text size="bodyLarge" weight="bold">
         2. Força de tabela - sos_score (17%)
       </Text>
 
@@ -85,7 +85,7 @@ const RatingDisclaimerModal: React.FC<RatingDisclaimerModalProps> = ({
         equipes quanto perder para um adversário mais fraco.
       </Text>
 
-      <Text variant="bodyLarge" bold>
+      <Text size="bodyLarge" weight="bold">
         3. Consistência – consistency (5%)
       </Text>
 
@@ -96,7 +96,7 @@ const RatingDisclaimerModal: React.FC<RatingDisclaimerModalProps> = ({
         perdem jogos que são favoritos.
       </Text>
 
-      <Text variant="bodyLarge" bold>
+      <Text size="bodyLarge" weight="bold">
         4. Padrão global – pca_score (23%)
       </Text>
 

@@ -17,7 +17,7 @@ const Dialog: React.FC<DialogProps> = ({
       <div className="flex flex-col items-center justify-center bg-slate-800 rounded-lg p-4">
         <Row className="items-center justify-between w-full mb-4 gap-2">
           {title && (
-            <Text variant="titleMedium" bold className="text-white">
+            <Text size="titleMedium" weight="bold">
               {title}
             </Text>
           )}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { RankingPlacement } from "@/types";
-import { Text } from "@/ui/atoms";
+import { Button, Row } from "@/ui/atoms";
 
 import { RankingPlacementItem } from "./components";
 import { RankingPlacementsListProps } from "./types";
@@ -18,15 +18,12 @@ const RankingPlacementsList: React.FC<RankingPlacementsListProps> = ({
   };
 
   return (
-    <ul className="flex flex-col gap-1 w-full">
-      <Text
-        variant="bodySmall"
-        bold
-        className="text-center mb-1 max-w-[1200px] text-sky-400 cursor-pointer hover:underline xl:block hidden self-end"
-        onClick={toggleAdvancedScores}
-      >
-        {isAdvancedScoresEnabled ? "Desativar" : "Ativar"} scores detalhados
-      </Text>
+    <div className="flex flex-col gap-1 w-full">
+      <Row justifyContent="end" className="hidden xl:flex">
+        <Button variant="ghost" onClick={toggleAdvancedScores}>
+          {isAdvancedScoresEnabled ? "Desativar" : "Ativar"} scores detalhados
+        </Button>
+      </Row>
 
       {placements?.map((placement: RankingPlacement) => (
         <RankingPlacementItem
@@ -41,7 +38,7 @@ const RankingPlacementsList: React.FC<RankingPlacementsListProps> = ({
           variation={placement.variation}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 

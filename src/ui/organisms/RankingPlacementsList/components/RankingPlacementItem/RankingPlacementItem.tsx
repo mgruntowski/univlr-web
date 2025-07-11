@@ -15,20 +15,18 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
   variation,
 }) => (
   <Link href={`/team/${team.slug}`}>
-    <li className="cursor-pointer">
-      <TeamCardRow
-        index={index}
-        name={team.name}
-        universityTag={team.universityTag}
-        points={points}
-        imageUrl={team.imageUrl}
-        matchesCount={matchesCount}
-        shouldDisplayAdvancedScores={isAdvancedScoresEnabled}
-        advancedScores={scores}
-        isNew={isNew}
-        variation={variation}
-      />
-    </li>
+    <TeamCardRow
+      index={index}
+      name={team.name}
+      universityTag={team.universityTag}
+      points={points}
+      imageUrl={team.imageUrl}
+      matchesCount={matchesCount}
+      shouldDisplayAdvancedScores={isAdvancedScoresEnabled}
+      advancedScores={scores}
+      isNew={isNew}
+      variation={variation}
+    />
   </Link>
 );
 

@@ -62,7 +62,7 @@ const TeamsPage: React.FC<{
 
       <div className="flex flex-col gap-2">
         <Row className="gap-2 items-center">
-          <Text variant="titleSmall" bold>
+          <Text size="titleSmall" weight="bold">
             Partidas
           </Text>
 

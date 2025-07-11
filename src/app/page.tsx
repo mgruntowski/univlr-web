@@ -2,7 +2,7 @@ import mainApi from "@/api";
 import { Page } from "@/ui/atoms";
 import { RankingPlacementsList } from "@/ui/organisms";
 
-import { HomeHeader } from "./components";
+import { HomeHeader, RankingDisclaimer } from "./components";
 
 const Home: React.FC = async () => {
   const ranking = await mainApi.getRanking();
@@ -11,6 +11,8 @@ const Home: React.FC = async () => {
     <div className="min-h-screen px-2 font-[family-name:var(--font-geist-sans)] sm:px-4 lg:px-8">
       <Page>
         <HomeHeader lastUpdate={ranking.lastUpdate.formatted} />
+
+        <RankingDisclaimer />
 
         <main>
           <RankingPlacementsList placements={ranking.placements} />

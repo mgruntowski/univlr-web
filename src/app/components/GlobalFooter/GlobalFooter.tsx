@@ -2,19 +2,19 @@ import { Text } from "@/ui/atoms";
 
 const GlobalFooter: React.FC = () => (
   <footer className="flex flex-col items-center justify-center py-8">
-    <Text variant="bodySmall" className="text-slate-400">
+    <Text size="bodySmall" color="gray">
       calculations, api, and data collection by kmyzth
     </Text>
 
-    <Text variant="bodySmall" className="text-slate-400">
+    <Text size="bodySmall" color="gray">
       website by kick
     </Text>
 
-    <Text variant="bodySmall" className="text-slate-400">
+    <Text size="bodySmall" color="gray">
       matches by bagres universitários
     </Text>
 
-    <Text variant="bodySmall" className="text-slate-400">
+    <Text size="bodySmall" color="gray">
       (:
     </Text>
   </footer>

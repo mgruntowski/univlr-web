@@ -8,11 +8,11 @@ const MatchesPage: React.FC = async () => {
   return (
     <Page className="flex flex-col gap-4 py-4">
       <div className="flex flex-col gap-1">
-        <Text variant="titleLarge" bold className="text-center">
+        <Text size="titleLarge" weight="bold" align="center">
           Partidas
         </Text>
 
-        <Text variant="bodySmall" className="text-center text-slate-400">
+        <Text size="bodySmall" color="gray" align="center">
           Últimas 20 partidas registradas.
         </Text>
       </div>

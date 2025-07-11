@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Text } from "@/ui/atoms";
+import { Card, Text } from "@/ui/atoms";
 
 import { PlayerCardProps } from "./types";
 
@@ -12,7 +12,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, imageUrl }) => (
     )}`}
     target="_blank"
   >
-    <div className="w-[120px] relative rounded-lg bg-slate-800 group cursor-pointer hover:bg-slate-700 transition-colors duration-300">
+    <Card className="w-[120px] relative group" isClickable>
       <div className="w-full h-[200px] relative overflow-hidden">
         <Image
           src={imageUrl}
@@ -24,13 +24,15 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, imageUrl }) => (
 
       <div className="p-2">
         <Text
-          variant="bodyXSmall"
-          className="text-slate-200 text-center line-clamp-1"
+          size="bodyXSmall"
+          color="gray"
+          align="center"
+          className="line-clamp-1"
         >
           {name.split("#")[0]}
         </Text>
       </div>
-    </div>
+    </Card>
   </Link>
 );
 
