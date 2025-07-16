@@ -8,13 +8,15 @@ import { withClientOnly } from "@/hocs";
 import { cn } from "@/lib/utils";
 
 const ThemeSwitch: React.FC = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
 
   const handleThemeChange = (value: boolean) => {
     setTheme(value ? "dark" : "light");
   };
 
-  if (!theme) return null;
+  if (!currentTheme) return null;
 
   return (
     <SwitchPrimitive.Root
@@ -22,7 +24,7 @@ const ThemeSwitch: React.FC = () => {
       className={cn(
         "inline-flex relative peer w-5 h-[1.3rem] shrink-0 rounded-full border border-border outline-none shadow-xs cursor-pointer bg-input focus-visible:border-ring focus-visible:ring-ring/50 transition-all duration-300 ease-in-out focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
       )}
-      checked={theme === "dark"}
+      checked={currentTheme === "dark"}
       onCheckedChange={handleThemeChange}
     >
       <SwitchPrimitive.Thumb
