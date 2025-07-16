@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { Card, Text } from "@/ui/atoms";
@@ -14,20 +13,19 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, imageUrl }) => (
   >
     <Card className="w-[120px] relative group" isClickable>
       <div className="w-full h-[200px] relative overflow-hidden">
-        <Image
+        <img
           src={imageUrl ?? "/images/user-silhouette.png"}
           alt={name}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-120"
+          className="object-cover h-[200px] transition-transform duration-300 group-hover:scale-120"
         />
       </div>
 
-      <div className="p-2">
+      <div className="p-1.5">
         <Text
           size="bodyXSmall"
           color="gray"
           align="center"
-          className="line-clamp-1"
+          className="line-clamp-1 group-hover:text-primary transition-colors duration-300"
         >
           {name.split("#")[0]}
         </Text>
