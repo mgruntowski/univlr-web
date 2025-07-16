@@ -1,21 +1,37 @@
 import mainApi from "@/api";
-import { Page } from "@/ui/atoms";
+import { Page, Text, Tooltip } from "@/ui/atoms";
 import { RankingPlacementsList } from "@/ui/organisms";
 
-import { HomeHeader, RankingDisclaimer } from "./components";
+import { RankingDisclaimer } from "./components";
 
 const Home: React.FC = async () => {
   const ranking = await mainApi.getRanking();
+  const snapshots = await mainApi.getRankingSnapshots();
 
   return (
     <div className="min-h-screen px-2 font-[family-name:var(--font-geist-sans)] sm:px-4 lg:px-8">
+      <Tooltip
+        id="ranking-tooltip"
+        place="left"
+        delayShow={250}
+        delayHide={250}
+      />
+
       <Page>
-        <HomeHeader lastUpdate={ranking.lastUpdate.formatted} />
+        <div className="flex flex-col items-center justify-center py-4">
+          <Text size="titleLarge" weight="bold" align="center">
+            Ranking Universitário de Valorant
+          </Text>
+        </div>
 
         <RankingDisclaimer />
 
         <main>
-          <RankingPlacementsList placements={ranking.placements} />
+          <RankingPlacementsList
+            placements={ranking.placements}
+            lastUpdate={ranking.lastUpdate}
+            snapshots={snapshots}
+          />
         </main>
       </Page>
     </div>

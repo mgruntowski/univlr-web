@@ -1,6 +1,10 @@
 import mainApi from "@/api";
-import { Page, Row, Text } from "@/ui/atoms";
+import { Page, Row, Tabs } from "@/ui/atoms";
+import { TabsContent, TabsList, TabsTrigger } from "@/ui/atoms/Tabs/components";
 import { MatchRow, PlayerCard, TeamHeader } from "@/ui/molecules";
+
+import { TEAM_TABS } from "./utils/constants";
+// FIX: use composition instead of importing components directly
 
 export const generateMetadata = async ({
   params,
@@ -46,21 +50,56 @@ const TeamsPage: React.FC<{
         imageUrl={teamData.imageUrl}
         universityTag={teamData.universityTag}
         university={teamData.university}
+        state={teamData.state}
       />
 
-      <div className="flex flex-col gap-2">
+      <Tabs defaultValue="players">
+        <TabsList>
+          {TEAM_TABS.map((tab) => (
+            <TabsTrigger key={tab.value} value={tab.value}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        <TabsContent value="players">
+          <Row gap="1">
+            {players.map((player) => (
+              <PlayerCard key={player.id} name={player.nick} />
+            ))}
+          </Row>
+        </TabsContent>
+
+        <TabsContent value="matches">
+          <div className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1">
+              {matchesWithVictory.map((match) => (
+                <MatchRow
+                  key={match.id}
+                  id={match.id}
+                  date={match.date}
+                  round={match.round}
+                  tournament={match.tournament}
+                  map={match.map}
+                  teamMatchInfoA={match.teamMatchInfoA}
+                  teamMatchInfoB={match.teamMatchInfoB}
+                  isVictory={match.isVictory}
+                />
+              ))}
+            </ul>
+          </div>
+        </TabsContent>
+      </Tabs>
+
+      {/* <div className="flex flex-col gap-2">
         <Row className="gap-2 flex-wrap">
           {players.map((player) => (
-            <PlayerCard
-              key={player.id}
-              name={player.nick}
-              imageUrl={teamData.imageUrl}
-            />
+            <PlayerCard key={player.id} name={player.nick} />
           ))}
         </Row>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col gap-2">
+      {/* <div className="flex flex-col gap-2">
         <Row className="gap-2 items-center">
           <Text size="titleSmall" weight="bold">
             Partidas
@@ -93,7 +132,7 @@ const TeamsPage: React.FC<{
             />
           ))}
         </ul>
-      </div>
+      </div> */}
     </Page>
   );
 };

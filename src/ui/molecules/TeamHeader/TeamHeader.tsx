@@ -10,6 +10,7 @@ const TeamHeader: React.FC<TeamHeaderProps> = ({
   imageUrl,
   universityTag,
   university,
+  state,
 }) => (
   <div className="flex flex-col rounded-md bg-card">
     <div className="w-full h-[200px] relative overflow-hidden rounded-t-md bg-card border-t border-x border-border">
@@ -46,9 +47,19 @@ const TeamHeader: React.FC<TeamHeaderProps> = ({
           </Text>
         </Row>
 
-        <Text size="bodyMedium">
-          {universityTag} - {university}
-        </Text>
+        <div className="flex flex-col">
+          <Text size="bodyMedium">
+            {universityTag} - {university}
+          </Text>
+
+          {state && (
+            <Row alignItems="center" gap="1">
+              <img src={state.icon} alt={state.name} width={20} height={20} />
+
+              <Text size="bodyMedium">{state.name}</Text>
+            </Row>
+          )}
+        </div>
       </div>
     </Row>
   </div>

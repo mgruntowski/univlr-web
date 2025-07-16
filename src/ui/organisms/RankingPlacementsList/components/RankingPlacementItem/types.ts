@@ -2,11 +2,11 @@ import { AdvancedScores, Team } from "@/types";
 
 export type RankingPlacementItemProps = {
   index: number;
-  points: number;
+  points: string;
   matchesCount: number;
   team: Team;
   scores: AdvancedScores;
-  isAdvancedScoresEnabled: boolean;
   isNew: boolean;
   variation: number;
+  scoreVariation: string;
 };

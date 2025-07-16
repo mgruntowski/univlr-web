@@ -1,5 +1,7 @@
 import { RemoteTeam, Team } from "@/types";
 
+import { stateAdapter } from "../../states/utils/adapters";
+
 export const teamAdapter = (team: RemoteTeam): Team => {
   const {
     id,
@@ -10,7 +12,7 @@ export const teamAdapter = (team: RemoteTeam): Team => {
     university_tag,
     instagram,
     twitch,
-    estado,
+    estado_info,
     logo,
   } = team;
 
@@ -22,7 +24,7 @@ export const teamAdapter = (team: RemoteTeam): Team => {
     university,
     tag,
     universityTag: university_tag,
-    uf: estado,
+    state: estado_info ? stateAdapter(estado_info) : undefined,
     instagram,
     twitch,
   };

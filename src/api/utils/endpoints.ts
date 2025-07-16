@@ -1,7 +1,8 @@
 const endpoints = {
-  ranking: "/ranking",
   matches: "/matches",
   players: "/teams/:teamId/players",
+  ranking: "/ranking",
+  rankingSnapshots: "/ranking/snapshots",
   teams: "/teams",
   teamBySlug: "/teams/by-slug/:slug",
   teamById: "/teams/:teamId",

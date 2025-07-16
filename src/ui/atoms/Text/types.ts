@@ -11,5 +11,8 @@ export type TextProps = PropsWithChildren<
     className?: string;
     onClick?: () => void;
     title?: string;
+    dataTooltipId?: string;
+    dataTooltipContent?: string;
+    dataTooltipHtml?: string;
   } & Margins
 >;

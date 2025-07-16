@@ -15,7 +15,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ name, imageUrl }) => (
     <Card className="w-[120px] relative group" isClickable>
       <div className="w-full h-[200px] relative overflow-hidden">
         <Image
-          src={imageUrl}
+          src={imageUrl ?? "/images/user-silhouette.png"}
           alt={name}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-120"

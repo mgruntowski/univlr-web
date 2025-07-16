@@ -10,7 +10,7 @@ export const DUELISTS = [
 ];
 
 export const INITIATORS = [
-  "Geeko",
+  "Gekko",
   "Sova",
   "Kayo",
   "Breach",

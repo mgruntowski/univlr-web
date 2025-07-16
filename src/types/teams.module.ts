@@ -1,3 +1,5 @@
+import { RemoteState, State } from "./states.module";
+
 export interface RemoteTeam {
   id: number;
   logo: string;
@@ -9,6 +11,7 @@ export interface RemoteTeam {
   instagram: string;
   twitch: string;
   estado: string;
+  estado_info?: RemoteState;
 }
 
 export interface Team {
@@ -19,7 +22,7 @@ export interface Team {
   university: string;
   tag: string;
   universityTag: string;
-  uf: string;
   instagram: string;
   twitch: string;
+  state?: State;
 }

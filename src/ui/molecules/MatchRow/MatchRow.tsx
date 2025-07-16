@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Card, Row, Text } from "@/ui/atoms";
 
 import { AgentsRow } from "./components";
@@ -18,13 +16,12 @@ const MatchRow: React.FC<MatchRowProps> = ({
   <Card>
     <div className="grid grid-cols-[200px_200px_1fr_200px_200px] justify-between items-center w-full">
       <Row className="flex-1/8 items-left gap-1">
-        <div
-          className="relative h-6 w-[60px] rounded-tl-md rounded-bl-md"
-          style={{
-            backgroundImage: `url(${tournament.logo})`,
-            backgroundSize: "200%",
-            backgroundPosition: "right",
-          }}
+        <img
+          src={tournament.logo}
+          alt={tournament.name}
+          width={48}
+          height={48}
+          className="rounded-tl-md rounded-bl-md"
         />
 
         <div className="flex flex-col justify-center items-start">
@@ -57,7 +54,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
         </Text>
 
         <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
-          <Image
+          <img
             src={teamMatchInfoA.team.imageUrl}
             alt={teamMatchInfoA.team.name}
             title={`${teamMatchInfoA.team.name} - ${teamMatchInfoA.team.universityTag}`}
@@ -88,7 +85,7 @@ const MatchRow: React.FC<MatchRowProps> = ({
         </div>
 
         <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
-          <Image
+          <img
             src={teamMatchInfoB.team.imageUrl}
             alt={teamMatchInfoB.team.name}
             title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
@@ -118,12 +115,13 @@ const MatchRow: React.FC<MatchRowProps> = ({
       <div className="flex flex-1/8 justify-end items-center">
         {map && (
           <div className="relative h-6 w-[120px] rounded-r-md">
-            <Image
+            <img
               src={`/images/maps/miniature/${map}.webp`}
               alt={map}
               title={map.toUpperCase()}
-              fill
-              className="object-cover rounded-r-md"
+              className="object-cover rounded-r-md h-6"
+              width={120}
+              height={48}
             />
 
             <div className="absolute bottom-1/2 right-0 w-full translate-y-1/2 flex items-center justify-center bg-gray-800/60 py-0.25">

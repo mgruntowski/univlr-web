@@ -10,9 +10,9 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
   matchesCount,
   team,
   scores,
-  isAdvancedScoresEnabled,
   isNew,
   variation,
+  scoreVariation,
 }) => (
   <Link href={`/team/${team.slug}`}>
     <TeamCardRow
@@ -22,10 +22,10 @@ const RankingPlacementItem: React.FC<RankingPlacementItemProps> = ({
       points={points}
       imageUrl={team.imageUrl}
       matchesCount={matchesCount}
-      shouldDisplayAdvancedScores={isAdvancedScoresEnabled}
       advancedScores={scores}
       isNew={isNew}
       variation={variation}
+      scoreVariation={scoreVariation}
     />
   </Link>
 );

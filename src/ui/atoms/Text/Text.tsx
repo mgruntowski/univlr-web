@@ -15,6 +15,9 @@ const Text: React.FC<TextProps> = ({
   ml,
   mx,
   my,
+  dataTooltipId,
+  dataTooltipContent,
+  dataTooltipHtml,
   ...props
 }) => (
   <p
@@ -24,6 +27,9 @@ const Text: React.FC<TextProps> = ({
     )}
     onClick={onClick}
     title={title}
+    data-tooltip-id={dataTooltipId}
+    data-tooltip-content={dataTooltipContent}
+    data-tooltip-html={dataTooltipHtml}
   >
     {children}
   </p>

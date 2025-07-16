@@ -4,11 +4,11 @@ export type TeamCardRowProps = {
   index: number;
   name: string;
   universityTag: string;
-  points: number;
+  points: string;
   imageUrl: string;
   matchesCount: number;
-  shouldDisplayAdvancedScores?: boolean;
   advancedScores?: AdvancedScores;
   isNew: boolean;
   variation: number;
+  scoreVariation: string;
 };
