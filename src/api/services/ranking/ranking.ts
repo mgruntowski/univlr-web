@@ -22,7 +22,7 @@ export const getRanking = async () => {
 export const getRankingSnapshots = async () => {
   const res = await fetch(`${BASE_URL}${endpoints.rankingSnapshots}`, {
     next: {
-      revalidate: 60 * 60 * 2, // 2 hours
+      revalidate: 60 * 60 * 12, // 12 hours
     },
   });
   const { data } = (await res.json()) as { data: RemoteSnapshot[] };

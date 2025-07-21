@@ -11,21 +11,19 @@ import { RankingPlacementItem } from "./components";
 import { RankingPlacementsListProps } from "./types";
 
 const RankingPlacementsList: React.FC<RankingPlacementsListProps> = ({
-  placements,
-  lastUpdate,
   snapshots,
 }) => {
-  const [currentSnapshot, setCurrentSnapshot] = useState(-1);
+  const [currentSnapshot, setCurrentSnapshot] = useState(0);
 
-  const currentPlacements = useMemo(() => {
-    if (currentSnapshot === -1) return placements;
-    return snapshots[currentSnapshot].ranking;
-  }, [currentSnapshot, snapshots, placements]);
+  const currentPlacements = useMemo(
+    () => snapshots[currentSnapshot].ranking,
+    [currentSnapshot, snapshots]
+  );
 
-  const currentLastUpdate = useMemo(() => {
-    if (currentSnapshot === -1) return lastUpdate;
-    return snapshots[currentSnapshot].createdAt;
-  }, [currentSnapshot, snapshots, lastUpdate]);
+  const currentLastUpdate = useMemo(
+    () => snapshots[currentSnapshot].createdAt,
+    [currentSnapshot, snapshots]
+  );
 
   const goToOlderSnapshot = () => {
     setCurrentSnapshot((prev) => prev + 1);
@@ -56,7 +54,7 @@ const RankingPlacementsList: React.FC<RankingPlacementsListProps> = ({
             variant="ghost"
             size="icon"
             onClick={goToNewerSnapshot}
-            disabled={currentSnapshot === -1}
+            disabled={currentSnapshot === 0}
           >
             <ChevronRight size={12} />
           </Button>

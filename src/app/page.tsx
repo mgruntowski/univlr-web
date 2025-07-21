@@ -5,7 +5,6 @@ import { RankingPlacementsList } from "@/ui/organisms";
 import { RankingDisclaimer } from "./components";
 
 const Home: React.FC = async () => {
-  const ranking = await mainApi.getRanking();
   const snapshots = await mainApi.getRankingSnapshots();
 
   return (
@@ -27,11 +26,7 @@ const Home: React.FC = async () => {
         <RankingDisclaimer />
 
         <main>
-          <RankingPlacementsList
-            placements={ranking.placements}
-            lastUpdate={ranking.lastUpdate}
-            snapshots={snapshots}
-          />
+          <RankingPlacementsList snapshots={snapshots} />
         </main>
       </Page>
     </div>

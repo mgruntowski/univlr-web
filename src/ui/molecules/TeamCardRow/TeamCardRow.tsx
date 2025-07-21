@@ -33,7 +33,7 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
           </Text>
         </div>
 
-        <div className="w-4 py-0.25 flex items-center justify-center">
+        <div className="hidden w-4 py-0.25 items-center justify-center sm:flex">
           {isNew ? (
             <Text size="bodyXXSmall" color="accent">
               NOVO
@@ -66,13 +66,16 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
 
         <div>
           <Row alignItems="center" gap="1">
-            <Text size="bodyLarge" className="text-nowrap">
+            <Text
+              size="bodyLarge"
+              className="text-nowrap max-[400px]:max-w-[100px] sm:max-w-[300px] overflow-hidden text-ellipsis"
+            >
               {name}
             </Text>
             <Text
               size="bodySmall"
               color="gray"
-              className="hidden text-nowrap sm:block"
+              className="hidden text-nowrap md:block"
             >
               ({matchesCount} {matchesCount === 1 ? "partida" : "partidas"})
             </Text>
@@ -85,7 +88,7 @@ const TeamCardRow: React.FC<TeamCardRowProps> = ({
 
       <Row alignItems="center" gap="1">
         {Number(scoreVariation) !== 0 && (
-          <Row>
+          <Row className="hidden sm:flex">
             {Number(scoreVariation) > 0 ? (
               <ChevronUp size={10} className="text-success" />
             ) : (

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Card, Row, Text } from "@/ui/atoms";
 
 import { AgentsRow } from "./components";
@@ -44,25 +46,29 @@ const MatchRow: React.FC<MatchRowProps> = ({
       </Row>
 
       <div className="grid grid-cols-[1fr_40px_80px_40px_1fr] items-center justify-center gap-1 h-6 xl:gap-2">
-        <Text
-          size="bodySmall"
-          weight="bold"
-          align="right"
-          title={`${teamMatchInfoA.team.name} - ${teamMatchInfoA.team.universityTag}`}
-        >
-          {teamMatchInfoA.team.tag}
-        </Text>
-
-        <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
-          <img
-            src={teamMatchInfoA.team.imageUrl}
-            alt={teamMatchInfoA.team.name}
+        <Link href={`/team/${teamMatchInfoA.team.slug}`}>
+          <Text
+            size="bodySmall"
+            weight="bold"
+            align="right"
             title={`${teamMatchInfoA.team.name} - ${teamMatchInfoA.team.universityTag}`}
-            width={40}
-            height={40}
-            className="object-contain w-5 h-5"
-          />
-        </div>
+          >
+            {teamMatchInfoA.team.tag}
+          </Text>
+        </Link>
+
+        <Link href={`/team/${teamMatchInfoA.team.slug}`}>
+          <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
+            <img
+              src={teamMatchInfoA.team.imageUrl}
+              alt={teamMatchInfoA.team.name}
+              title={`${teamMatchInfoA.team.name} - ${teamMatchInfoA.team.universityTag}`}
+              width={40}
+              height={40}
+              className="object-contain w-5 h-5"
+            />
+          </div>
+        </Link>
 
         <div
           className={`h-full w-10 flex items-center justify-center gap-1 ${
@@ -84,24 +90,28 @@ const MatchRow: React.FC<MatchRowProps> = ({
           </div>
         </div>
 
-        <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
-          <img
-            src={teamMatchInfoB.team.imageUrl}
-            alt={teamMatchInfoB.team.name}
-            title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
-            width={40}
-            height={40}
-            className="object-contain w-5 h-5"
-          />
-        </div>
+        <Link href={`/team/${teamMatchInfoB.team.slug}`}>
+          <div className="w-4 h-4 flex items-center justify-center xl:w-5 xl:h-5">
+            <img
+              src={teamMatchInfoB.team.imageUrl}
+              alt={teamMatchInfoB.team.name}
+              title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
+              width={40}
+              height={40}
+              className="object-contain w-5 h-5"
+            />
+          </div>
+        </Link>
 
-        <Text
-          size="bodySmall"
-          weight="bold"
-          title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
-        >
-          {teamMatchInfoB.team.tag}
-        </Text>
+        <Link href={`/team/${teamMatchInfoB.team.slug}`}>
+          <Text
+            size="bodySmall"
+            weight="bold"
+            title={`${teamMatchInfoB.team.name} - ${teamMatchInfoB.team.universityTag}`}
+          >
+            {teamMatchInfoB.team.tag}
+          </Text>
+        </Link>
       </div>
 
       <Row className="gap-1 h-3 items-center justify-start">
